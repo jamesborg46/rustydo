@@ -8,10 +8,13 @@ pub struct Todo {
 
 impl Todo {
     pub fn new(id: u32, title: String, completed: bool) -> Self {
-        Todo { id, title, completed }
+        Todo {
+            id,
+            title,
+            completed,
+        }
     }
 }
-
 
 impl fmt::Display for Todo {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -20,11 +23,14 @@ impl fmt::Display for Todo {
             "Todo #{}: '{}' [{}]",
             self.id,
             self.title,
-            if self.completed { "Completed" } else { "Pending" }
+            if self.completed {
+                "Completed"
+            } else {
+                "Pending"
+            }
         )
     }
 }
-
 
 #[cfg(test)]
 mod tests {
