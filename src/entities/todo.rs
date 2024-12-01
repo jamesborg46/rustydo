@@ -1,6 +1,7 @@
 use chrono::NaiveDate;
 use std::fmt;
 
+/// Represents a todo item with an id, title, completion status, and date. 
 pub struct Todo {
     id: u32,
     title: String,
@@ -9,6 +10,16 @@ pub struct Todo {
 }
 
 impl Todo {
+    /// Creates a new todo item with the given id, title, completion status, and date.
+    ///
+    /// # Arguments
+    /// * `id` - The id of the todo item.
+    /// * `title` - The title of the todo item.
+    /// * `completed` - The completion status of the todo item.
+    /// * `date` - The date of the todo item.
+    ///
+    /// # Returns
+    /// A new todo item with the given id, title, completion status, and date.
     pub fn new(id: u32, title: String, completed: bool, date: NaiveDate) -> Self {
         Todo {
             id,
