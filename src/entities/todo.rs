@@ -1,8 +1,9 @@
 use chrono::NaiveDate;
 use std::fmt;
+use serde::{Serialize, Deserialize};
 
 /// Represents a todo item with an id, title, completion status, and date. 
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Todo {
     id: u32,
     title: String,

@@ -2,8 +2,8 @@ use crate::entities::Todo;
 use crate::use_cases::repo_interface::TodoRepo;
 use std::error::Error;
 
-pub fn add_todo(repo: &impl TodoRepo, todo: &Todo) -> Result<(), Box<dyn Error>> {
-    repo.push_todo(todo);
+pub fn add_todo(repo: &mut impl TodoRepo, todo: &Todo) -> Result<(), Box<dyn Error>> {
+    repo.push_todo(todo)?;
     Ok(())
 }
 
@@ -33,9 +33,9 @@ mod tests {
             .expect_push_todo()
             .with(predicate::eq(todo.clone()))
             .times(1)
-            .returning(|_| ());
+            .returning(|_| (Ok(())));
 
-        let result = add_todo(&mock_repo, &todo);
+        let result = add_todo(&mut mock_repo, &todo);
         assert!(result.is_ok());
     }
 
