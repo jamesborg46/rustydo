@@ -8,19 +8,13 @@ pub struct Todo {
 
 impl Todo {
     pub fn new(id: u32, title: String, completed: bool) -> Self {
-        Self {
-            id,
-            title,
-            completed,
-        }
+        Todo { id, title, completed }
     }
 }
 
 
-// Implement the Display trait for Todo
 impl fmt::Display for Todo {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        // Customize the string representation
         write!(
             f,
             "Todo #{}: '{}' [{}]",
@@ -28,5 +22,19 @@ impl fmt::Display for Todo {
             self.title,
             if self.completed { "Completed" } else { "Pending" }
         )
+    }
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_todo_creation() {
+        let todo = Todo::new(1, String::from("Test Todo"), false);
+        assert_eq!(todo.id, 1);
+        assert_eq!(todo.title, "Test Todo");
+        assert!(!todo.completed);
     }
 }
