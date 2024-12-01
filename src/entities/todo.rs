@@ -2,6 +2,7 @@ use chrono::NaiveDate;
 use std::fmt;
 
 /// Represents a todo item with an id, title, completion status, and date. 
+#[derive(Debug, PartialEq, Clone)]
 pub struct Todo {
     id: u32,
     title: String,
